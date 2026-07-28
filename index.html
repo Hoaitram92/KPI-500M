@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KPI-500M</title>
 
-  <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSION 500M</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="background"></div>
+
 <div class="container">
 
-    <h1 class="title">🚀 MISSION 500M</h1>
+    <h1>🚀 MISSION 500M</h1>
 
-    <p class="subtitle">
-        Dashboard doanh số thời gian thực
-    </p>
+    <div class="goal">
+        Mục tiêu: <b>500.000.000 ₫</b>
+    </div>
 
-    <div class="card">
+    <!-- Đường chạy -->
+    <div class="race">
 
-        <div class="money">
-            0 ₫
+        <div class="flag">
+            🏁
         </div>
 
-        <div class="target">
-            Mục tiêu: 500.000.000 ₫
+        <div id="dino" class="dino">
+            🦖
         </div>
 
-        <div class="progress">
-            <div class="bar"></div>
+    </div>
+
+    <!-- Tiến độ -->
+    <div class="progress">
+
+        <div id="bar" class="bar"></div>
+
+    </div>
+
+    <!-- Doanh số -->
+    <div id="money" class="money">
+        0 ₫
+    </div>
+
+    <div id="percent" class="percent">
+        0%
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+
+        <div class="popup-title">
+            🏪 ĐẠI LÝ VỪA LÊN ĐƠN
         </div>
+
+        <div id="popupStore"></div>
+
+        <div id="popupMoney"></div>
 
     </div>
 
 </div>
 
+<canvas id="fireworks"></canvas>
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
