@@ -8,7 +8,7 @@ const TARGET = 500000000;
 
 /* Dán URL Apps Script vào đây */
 
-const API_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const API_URL = "https://script.google.com/macros/s/AKfycby1Duo1YkcLcoqVSFNIi3PNYCu2R6P4NFUSOgA4CmAQHMM4WTbtK6iZUrJND_XzhSne/exec";
 
 /*=========================================================
         DOM
