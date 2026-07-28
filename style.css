@@ -1,221 +1,793 @@
+/* =======================================================
+   MISSION 500M DASHBOARD
+   STYLE.CSS
+   PART 1
+======================================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI,Arial,sans-serif;
+}
+
+html,body{
+    width:100%;
+    height:100%;
 }
 
 body{
-    background:#07131f;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:#091b2f;
+
+    color:#ffffff;
+
     overflow:hidden;
-    color:#fff;
+
 }
 
-.background{
+/* =========================
+        BACKGROUND
+========================= */
+
+.sky{
+
     position:fixed;
+
     inset:0;
-    background:linear-gradient(#0d2747,#113f72,#6bb7ff);
-    z-index:-2;
+
+    background:
+
+    linear-gradient(
+        to bottom,
+        #12385f 0%,
+        #1d5d8f 45%,
+        #77c7ff 100%
+    );
+
+    z-index:-5;
+
 }
 
-.background::after{
-    content:"";
-    position:absolute;
-    bottom:0;
+.ground{
+
+    position:fixed;
+
     left:0;
-    width:100%;
-    height:120px;
-    background:#3aa655;
-}
 
-.container{
-    width:95%;
-    max-width:1400px;
-    margin:auto;
-    padding-top:30px;
-}
-
-h1{
-    text-align:center;
-    font-size:60px;
-    letter-spacing:3px;
-}
-
-.goal{
-    text-align:center;
-    margin-top:10px;
-    font-size:24px;
-    color:#ffe082;
-}
-
-.race{
-    position:relative;
-    width:100%;
-    height:170px;
-    margin-top:50px;
-    border-bottom:6px dashed white;
-}
-
-.flag{
-    position:absolute;
     right:0;
-    bottom:12px;
-    font-size:70px;
+
+    bottom:0;
+
+    height:110px;
+
+    background:
+
+    linear-gradient(
+        #2b7c36,
+        #3fb24c
+    );
+
+    z-index:-4;
+
 }
 
-.dino{
-    position:absolute;
-    left:0;
-    bottom:5px;
-    font-size:90px;
-    transition:left .8s ease;
-    animation:bounce .4s infinite alternate;
-}
-
-@keyframes bounce{
-    from{
-        transform:translateY(0px);
-    }
-    to{
-        transform:translateY(-8px);
-    }
-}
-
-.progress{
-    width:100%;
-    height:38px;
-    background:#29425d;
-    border-radius:30px;
-    overflow:hidden;
-    margin-top:45px;
-}
-
-.bar{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,#00e676,#66ff99);
-    transition:width .8s;
-}
-
-.money{
-    text-align:center;
-    margin-top:35px;
-    font-size:72px;
-    color:#00ff99;
-    font-weight:bold;
-}
-
-.percent{
-    text-align:center;
-    margin-top:15px;
-    font-size:40px;
-    font-weight:bold;
-}
-
-.popup{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    width:320px;
-    background:white;
-    color:#222;
-    border-radius:18px;
-    padding:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
-    opacity:0;
-    transform:translateY(40px);
-    transition:.5s;
-}
-
-.popup.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.popup-title{
-    font-size:22px;
-    font-weight:bold;
-    color:#ff5722;
-    margin-bottom:12px;
-}
-
-#popupStore{
-    font-size:24px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-#popupMoney{
-    font-size:34px;
-    color:#0a9b43;
-    font-weight:bold;
-}
-
-canvas{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-}
+/* =========================
+         CLOUD
+========================= */
 
 .cloud{
+
     position:absolute;
-    font-size:45px;
-    animation:cloudMove 35s linear infinite;
-    opacity:.8;
+
+    font-size:60px;
+
+    opacity:.85;
+
+    user-select:none;
+
 }
 
-.cloud:nth-child(1){
+.cloud1{
+
     top:60px;
+
+    left:-150px;
+
+    animation:cloudMove 35s linear infinite;
+
 }
 
-.cloud:nth-child(2){
-    top:140px;
-    animation-duration:45s;
+.cloud2{
+
+    top:160px;
+
+    left:-200px;
+
+    animation:cloudMove 55s linear infinite;
+
 }
 
-.cloud:nth-child(3){
-    top:220px;
-    animation-duration:55s;
+.cloud3{
+
+    top:250px;
+
+    left:-180px;
+
+    animation:cloudMove 45s linear infinite;
+
 }
 
 @keyframes cloudMove{
+
     from{
-        left:-150px;
+
+        transform:translateX(0);
+
     }
 
     to{
-        left:110%;
+
+        transform:translateX(calc(100vw + 400px));
+
     }
+
 }
 
-@media(max-width:900px){
+/* =========================
+       CONTAINER
+========================= */
 
-h1{
-    font-size:36px;
+.container{
+
+    width:min(1500px,95%);
+
+    margin:auto;
+
+    padding-top:30px;
+
 }
 
-.money{
-    font-size:42px;
+/* =========================
+        HEADER
+========================= */
+
+header{
+
+    text-align:center;
+
 }
 
-.percent{
+header h1{
+
+    font-size:58px;
+
+    letter-spacing:4px;
+
+    font-weight:900;
+
+    text-shadow:
+
+        0 6px 12px rgba(0,0,0,.35);
+
+}
+
+header p{
+
+    margin-top:12px;
+
+    color:#d9e6ff;
+
+    font-size:22px;
+
+}
+
+/* =========================
+          KPI
+========================= */
+
+.kpi{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(3,1fr);
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+.card{
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    backdrop-filter:blur(14px);
+
+    border:
+
+    1px solid rgba(255,255,255,.18);
+
+    border-radius:22px;
+
+    padding:24px;
+
+    text-align:center;
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.label{
+
+    display:block;
+
+    font-size:20px;
+
+    color:#cde2ff;
+
+    margin-bottom:15px;
+
+}
+
+.value{
+
+    font-size:44px;
+
+    font-weight:900;
+
+    color:#ffffff;
+
+    text-shadow:
+
+        0 4px 10px rgba(0,0,0,.25);
+
+}
+/* =======================================================
+   STYLE.CSS
+   PART 2
+======================================================= */
+
+/* =========================
+        RACE TRACK
+========================= */
+
+.race{
+
+    position:relative;
+
+    width:100%;
+
+    height:180px;
+
+    margin-top:55px;
+
+    border-bottom:8px dashed rgba(255,255,255,.75);
+
+}
+
+.finish{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:8px;
+
+    font-size:80px;
+
+    filter:drop-shadow(0 5px 8px rgba(0,0,0,.35));
+
+}
+
+/* =========================
+        DINO
+========================= */
+
+#dino{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:8px;
+
+    font-size:95px;
+
+    transition:left .8s cubic-bezier(.2,.8,.2,1);
+
+    filter:
+
+        drop-shadow(0 8px 10px rgba(0,0,0,.35));
+
+    animation:
+
+        dinoJump .55s infinite alternate;
+
+}
+
+@keyframes dinoJump{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/* =========================
+      PROGRESS BAR
+========================= */
+
+.progress{
+
+    width:100%;
+
+    height:38px;
+
+    margin-top:45px;
+
+    background:
+
+        rgba(255,255,255,.18);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        inset 0 0 10px rgba(0,0,0,.35);
+
+}
+
+#bar{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        #00d26a,
+
+        #32ff8f,
+
+        #9cffc5
+
+    );
+
+    transition:width .8s;
+
+}
+
+/* =========================
+        POPUP
+========================= */
+
+#popup{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    width:330px;
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:
+
+        rgba(255,255,255,.95);
+
+    color:#222;
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,.35);
+
+    opacity:0;
+
+    transform:
+
+        translateY(40px);
+
+    transition:.45s;
+
+}
+
+#popup.show{
+
+    opacity:1;
+
+    transform:
+
+        translateY(0);
+
+}
+
+.popup-title{
+
+    color:#ff5722;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+#popupStore{
+
     font-size:28px;
-}
 
-.dino{
-    font-size:60px;
-}
+    font-weight:700;
 
-.flag{
-    font-size:48px;
-}
-
-.goal{
-    font-size:18px;
-}
-
-.popup{
-    width:260px;
-}
+    margin-bottom:10px;
 
 }
+
+#popupMoney{
+
+    font-size:36px;
+
+    color:#00a84f;
+
+    font-weight:900;
+
+}
+
+/* =========================
+       FIREWORK
+========================= */
+
+#fireworks{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+/* =========================
+      MONEY EFFECT
+========================= */
+
+#money{
+
+    color:#7dffb1;
+
+}
+
+#percent{
+
+    color:#ffd54f;
+
+}
+/* =======================================================
+   STYLE.CSS
+   PART 3 (FINAL)
+======================================================= */
+
+/* =========================
+      LEADERBOARD
+========================= */
+
+.leaderboard{
+
+    margin-top:45px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.25);
+
+}
+
+.leaderboard h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:32px;
+
+    color:#ffe082;
+
+}
+
+.leaderboard table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.leaderboard th{
+
+    padding:16px;
+
+    background:rgba(255,255,255,.15);
+
+    font-size:22px;
+
+}
+
+.leaderboard td{
+
+    padding:15px;
+
+    font-size:20px;
+
+    border-bottom:1px solid rgba(255,255,255,.10);
+
+}
+
+.leaderboard tbody tr{
+
+    transition:.25s;
+
+}
+
+.leaderboard tbody tr:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* =========================
+      GLASS EFFECT
+========================= */
+
+.card,
+.leaderboard,
+#popup{
+
+    border:1px solid rgba(255,255,255,.18);
+
+}
+
+/* =========================
+      FADE IN
+========================= */
+
+header,
+.kpi,
+.race,
+.progress,
+.leaderboard{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =========================
+      TV MODE
+========================= */
+
+@media (min-width:1600px){
+
+    header h1{
+
+        font-size:72px;
+
+    }
+
+    .value{
+
+        font-size:58px;
+
+    }
+
+    .leaderboard td{
+
+        font-size:24px;
+
+    }
+
+    #dino{
+
+        font-size:120px;
+
+    }
+
+    .finish{
+
+        font-size:95px;
+
+    }
+
+}
+
+/* =========================
+      TABLET
+========================= */
+
+@media(max-width:1100px){
+
+    .kpi{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .leaderboard{
+
+        margin-top:35px;
+
+    }
+
+}
+
+/* =========================
+      MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    body{
+
+        overflow:auto;
+
+    }
+
+    header h1{
+
+        font-size:36px;
+
+    }
+
+    header p{
+
+        font-size:18px;
+
+    }
+
+    .value{
+
+        font-size:32px;
+
+    }
+
+    .label{
+
+        font-size:18px;
+
+    }
+
+    .race{
+
+        height:120px;
+
+    }
+
+    #dino{
+
+        font-size:58px;
+
+    }
+
+    .finish{
+
+        font-size:48px;
+
+    }
+
+    .leaderboard h2{
+
+        font-size:24px;
+
+    }
+
+    .leaderboard th,
+    .leaderboard td{
+
+        font-size:16px;
+
+        padding:10px;
+
+    }
+
+    #popup{
+
+        width:260px;
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+    #popupStore{
+
+        font-size:22px;
+
+    }
+
+    #popupMoney{
+
+        font-size:28px;
+
+    }
+
+}
+
+/* =========================
+      SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#4fc3f7;
+
+    border-radius:20px;
+
+}
+
+/* =========================
+      END
+========================= */
