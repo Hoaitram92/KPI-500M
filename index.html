@@ -15,179 +15,155 @@
 
 <body>
 
-<!-- ================= BACKGROUND ================= -->
+    <!-- ================= BACKGROUND ================= -->
 
-<div class="sky">
+    <div class="sky">
 
-    <div class="cloud cloud1">☁️</div>
-    <div class="cloud cloud2">☁️</div>
-    <div class="cloud cloud3">☁️</div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
 
-</div>
+    </div>
 
-<div class="ground"></div>
+    <div class="ground"></div>
 
-<!-- ================= DASHBOARD ================= -->
+    <canvas id="fireworks"></canvas>
 
-<div class="container">
+    <!-- ================= MAIN ================= -->
 
-    <header>
+    <div class="container">
 
-        <h1>
-            🚀 MISSION 500M
-        </h1>
+        <header>
 
-        <p>
-            Dashboard doanh số thời gian thực
-        </p>
+            <h1>🚀 MISSION 500M</h1>
 
-    </header>
+            <p>
+                KPI Campaign Dashboard
+            </p>
 
-    <!-- KPI -->
+        </header>
 
-    <section class="kpi">
+        <!-- KPI -->
 
-        <div class="card">
+        <section class="kpi-grid">
 
-            <span class="label">
-                Doanh số
-            </span>
+            <div class="card">
 
-            <div id="money" class="value">
-                0 ₫
-            </div>
+                <div class="title">
+                    Doanh số
+                </div>
 
-        </div>
-
-        <div class="card">
-
-            <span class="label">
-                Hoàn thành
-            </span>
-
-            <div id="percent" class="value">
-                0%
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <span class="label">
-                Mục tiêu
-            </span>
-
-            <div class="value">
-
-                500.000.000 ₫
+                <div id="money" class="value">
+                    0 ₫
+                </div>
 
             </div>
 
+            <div class="card">
+
+                <div class="title">
+                    Hoàn thành
+                </div>
+
+                <div id="percent" class="value">
+                    0%
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="title">
+                    Mục tiêu
+                </div>
+
+                <div class="value">
+                    500.000.000 ₫
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RACE -->
+
+        <section class="race">
+
+            <div class="track">
+
+                <div id="bar"></div>
+
+                <div id="dino">
+                    🦖
+                </div>
+
+                <div id="flag">
+                    🏁
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- POPUP -->
+
+        <div id="popup">
+
+            <div class="popup-title">
+                🎉 Đơn hàng mới
+            </div>
+
+            <div id="popupStore"></div>
+
+            <div id="popupMoney"></div>
+
         </div>
 
-    </section>
+        <!-- LEADERBOARD -->
 
-    <!-- Race -->
+        <section class="leaderboard">
 
-    <section class="race">
+            <h2>
+                🏆 TOP 10 ĐẠI LÝ
+            </h2>
 
-        <div class="finish">
+            <table>
 
-            🏁
+                <thead>
 
-        </div>
+                    <tr>
 
-        <div id="dino">
+                        <th>Hạng</th>
 
-            🦖
+                        <th>Đại lý</th>
 
-        </div>
+                        <th>Doanh số</th>
 
-    </section>
+                    </tr>
 
-    <!-- Progress -->
+                </thead>
 
-    <section class="progress">
+                <tbody id="leaderboard">
 
-        <div id="bar"></div>
+                    <tr>
 
-    </section>
+                        <td colspan="3">
 
-    <!-- Latest Order -->
+                            Đang tải dữ liệu...
 
-    <section id="popup">
+                        </td>
 
-        <div class="popup-title">
+                    </tr>
 
-            🏪 ĐƠN HÀNG MỚI
+                </tbody>
 
-        </div>
+            </table>
 
-        <div id="popupStore">
+        </section>
 
-            --
+    </div>
 
-        </div>
-
-        <div id="popupMoney">
-
-            --
-
-        </div>
-
-    </section>
-
-    <!-- Leaderboard -->
-
-    <section class="leaderboard">
-
-        <h2>
-
-            🏆 TOP ĐẠI LÝ
-
-        </h2>
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>#</th>
-
-                    <th>Đại lý</th>
-
-                    <th>Doanh số</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="leaderboard">
-
-                <tr>
-
-                    <td colspan="3">
-
-                        Đang tải...
-
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </section>
-
-</div>
-
-<!-- Firework -->
-
-<canvas id="fireworks"></canvas>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
