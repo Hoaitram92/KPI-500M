@@ -2,68 +2,188 @@
 <html lang="vi">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>MISSION 500M</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="background"></div>
+<!-- ================= BACKGROUND ================= -->
+
+<div class="sky">
+
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+
+</div>
+
+<div class="ground"></div>
+
+<!-- ================= DASHBOARD ================= -->
 
 <div class="container">
 
-    <h1>🚀 MISSION 500M</h1>
+    <header>
 
-    <div class="goal">
-        Mục tiêu: <b>500.000.000 ₫</b>
-    </div>
+        <h1>
+            🚀 MISSION 500M
+        </h1>
 
-    <!-- Đường chạy -->
-    <div class="race">
+        <p>
+            Dashboard doanh số thời gian thực
+        </p>
 
-        <div class="flag">
+    </header>
+
+    <!-- KPI -->
+
+    <section class="kpi">
+
+        <div class="card">
+
+            <span class="label">
+                Doanh số
+            </span>
+
+            <div id="money" class="value">
+                0 ₫
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="label">
+                Hoàn thành
+            </span>
+
+            <div id="percent" class="value">
+                0%
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="label">
+                Mục tiêu
+            </span>
+
+            <div class="value">
+
+                500.000.000 ₫
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Race -->
+
+    <section class="race">
+
+        <div class="finish">
+
             🏁
+
         </div>
 
-        <div id="dino" class="dino">
+        <div id="dino">
+
             🦖
+
         </div>
 
-    </div>
+    </section>
 
-    <!-- Tiến độ -->
-    <div class="progress">
+    <!-- Progress -->
 
-        <div id="bar" class="bar"></div>
+    <section class="progress">
 
-    </div>
+        <div id="bar"></div>
 
-    <!-- Doanh số -->
-    <div id="money" class="money">
-        0 ₫
-    </div>
+    </section>
 
-    <div id="percent" class="percent">
-        0%
-    </div>
+    <!-- Latest Order -->
 
-    <!-- Popup -->
-    <div id="popup" class="popup">
+    <section id="popup">
 
         <div class="popup-title">
-            🏪 ĐẠI LÝ VỪA LÊN ĐƠN
+
+            🏪 ĐƠN HÀNG MỚI
+
         </div>
 
-        <div id="popupStore"></div>
+        <div id="popupStore">
 
-        <div id="popupMoney"></div>
+            --
 
-    </div>
+        </div>
+
+        <div id="popupMoney">
+
+            --
+
+        </div>
+
+    </section>
+
+    <!-- Leaderboard -->
+
+    <section class="leaderboard">
+
+        <h2>
+
+            🏆 TOP ĐẠI LÝ
+
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Đại lý</th>
+
+                    <th>Doanh số</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="leaderboard">
+
+                <tr>
+
+                    <td colspan="3">
+
+                        Đang tải...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
 
 </div>
+
+<!-- Firework -->
 
 <canvas id="fireworks"></canvas>
 
