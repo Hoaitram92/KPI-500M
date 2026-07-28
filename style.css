@@ -1,8 +1,8 @@
-/* =======================================================
-   MISSION 500M DASHBOARD
-   STYLE.CSS
-   PART 1
-======================================================= */
+/*=========================================================
+    MISSION 500M
+    STYLE.CSS
+    FINAL - PART 1/3
+=========================================================*/
 
 *{
     margin:0;
@@ -11,114 +11,120 @@
 }
 
 html,body{
+
     width:100%;
     height:100%;
-}
 
-body{
+    overflow:hidden;
 
     font-family:
         "Segoe UI",
         Arial,
         sans-serif;
 
-    background:#091b2f;
+    background:#8fd3ff;
 
-    color:#ffffff;
+}
+
+body{
+
+    position:relative;
+
+}
+
+/*==============================
+BACKGROUND
+==============================*/
+
+.sky{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            #7dd3fc,
+            #bfe8ff 60%,
+            #dff6ff
+        );
 
     overflow:hidden;
 
 }
 
-/* =========================
-        BACKGROUND
-========================= */
-
-.sky{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-    linear-gradient(
-        to bottom,
-        #12385f 0%,
-        #1d5d8f 45%,
-        #77c7ff 100%
-    );
-
-    z-index:-5;
-
-}
-
-.ground{
-
-    position:fixed;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    height:110px;
-
-    background:
-
-    linear-gradient(
-        #2b7c36,
-        #3fb24c
-    );
-
-    z-index:-4;
-
-}
-
-/* =========================
-         CLOUD
-========================= */
-
 .cloud{
 
     position:absolute;
 
-    font-size:60px;
+    width:220px;
+    height:70px;
 
-    opacity:.85;
+    background:white;
 
-    user-select:none;
+    border-radius:100px;
+
+    opacity:.9;
+
+}
+
+.cloud::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    left:30px;
+    top:-35px;
+
+    border-radius:50%;
+
+    background:white;
+
+}
+
+.cloud::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:110px;
+    height:110px;
+
+    right:20px;
+    top:-45px;
+
+    border-radius:50%;
+
+    background:white;
 
 }
 
 .cloud1{
 
-    top:60px;
+    top:8%;
 
-    left:-150px;
-
-    animation:cloudMove 35s linear infinite;
+    animation:cloudMove 70s linear infinite;
 
 }
 
 .cloud2{
 
-    top:160px;
+    top:22%;
 
-    left:-200px;
-
-    animation:cloudMove 55s linear infinite;
+    animation:cloudMove 95s linear infinite;
 
 }
 
 .cloud3{
 
-    top:250px;
+    top:38%;
 
-    left:-180px;
-
-    animation:cloudMove 45s linear infinite;
+    animation:cloudMove 120s linear infinite;
 
 }
 
@@ -126,7 +132,7 @@ body{
 
     from{
 
-        transform:translateX(0);
+        transform:translateX(-350px);
 
     }
 
@@ -138,161 +144,183 @@ body{
 
 }
 
-/* =========================
-       CONTAINER
-========================= */
+.ground{
 
-.container{
+    position:absolute;
 
-    width:min(1500px,95%);
+    bottom:0;
 
-    margin:auto;
+    width:100%;
 
-    padding-top:30px;
+    height:130px;
+
+    background:#4CAF50;
+
+    border-top:6px solid #2E7D32;
 
 }
 
-/* =========================
-        HEADER
-========================= */
+/*==============================
+CONTAINER
+==============================*/
+
+.container{
+
+    position:relative;
+
+    z-index:10;
+
+    width:95%;
+
+    max-width:1700px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
 
 header{
 
     text-align:center;
 
+    color:white;
+
+    margin-bottom:20px;
+
 }
 
 header h1{
 
-    font-size:58px;
+    font-size:54px;
 
-    letter-spacing:4px;
+    font-weight:800;
 
-    font-weight:900;
-
-    text-shadow:
-
-        0 6px 12px rgba(0,0,0,.35);
+    text-shadow:3px 3px 8px rgba(0,0,0,.3);
 
 }
 
 header p{
 
-    margin-top:12px;
-
-    color:#d9e6ff;
-
     font-size:22px;
+
+    margin-top:8px;
 
 }
 
-/* =========================
-          KPI
-========================= */
+/*==============================
+KPI
+==============================*/
 
-.kpi{
+.kpi-grid{
 
     display:grid;
 
     grid-template-columns:
-
         repeat(3,1fr);
 
-    gap:25px;
-
-    margin-top:35px;
+    gap:18px;
 
 }
 
 .card{
 
     background:
+        rgba(255,255,255,.28);
 
-    rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
 
-    backdrop-filter:blur(14px);
+    border-radius:18px;
 
-    border:
-
-    1px solid rgba(255,255,255,.18);
-
-    border-radius:22px;
-
-    padding:24px;
+    padding:22px;
 
     text-align:center;
 
     box-shadow:
-
-        0 12px 30px rgba(0,0,0,.25);
+        0 8px 25px rgba(0,0,0,.15);
 
 }
 
-.label{
-
-    display:block;
+.card .title{
 
     font-size:20px;
 
-    color:#cde2ff;
+    color:white;
 
-    margin-bottom:15px;
-
-}
-
-.value{
-
-    font-size:44px;
-
-    font-weight:900;
-
-    color:#ffffff;
-
-    text-shadow:
-
-        0 4px 10px rgba(0,0,0,.25);
+    margin-bottom:12px;
 
 }
-/* =======================================================
-   STYLE.CSS
-   PART 2
-======================================================= */
 
-/* =========================
-        RACE TRACK
-========================= */
+.card .value{
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+}
+/*=========================================================
+    STYLE.CSS
+    FINAL - PART 2/3
+=========================================================*/
+
+/*==============================
+RACE
+==============================*/
 
 .race{
+
+    margin-top:35px;
+
+    margin-bottom:30px;
+
+}
+
+.track{
 
     position:relative;
 
     width:100%;
 
-    height:180px;
+    height:90px;
 
-    margin-top:55px;
+    background:#ffffff;
 
-    border-bottom:8px dashed rgba(255,255,255,.75);
+    border-radius:50px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
 
 }
 
-.finish{
+/* Progress */
+
+#bar{
 
     position:absolute;
 
-    right:0;
+    left:0;
 
-    bottom:8px;
+    top:0;
 
-    font-size:80px;
+    height:100%;
 
-    filter:drop-shadow(0 5px 8px rgba(0,0,0,.35));
+    width:0;
+
+    background:linear-gradient(
+        90deg,
+        #4CAF50,
+        #7ED957
+    );
+
+    transition:width .8s ease;
 
 }
 
-/* =========================
-        DINO
-========================= */
+/* Dino */
 
 #dino{
 
@@ -302,145 +330,90 @@ header p{
 
     bottom:8px;
 
-    font-size:95px;
+    font-size:52px;
 
-    transition:left .8s cubic-bezier(.2,.8,.2,1);
+    transition:left .8s ease;
 
-    filter:
+    z-index:5;
 
-        drop-shadow(0 8px 10px rgba(0,0,0,.35));
-
-    animation:
-
-        dinoJump .55s infinite alternate;
+    animation:bounce .8s infinite;
 
 }
 
-@keyframes dinoJump{
+@keyframes bounce{
 
-    from{
+    0%,100%{
 
         transform:translateY(0);
 
     }
 
-    to{
+    50%{
 
-        transform:translateY(-10px);
+        transform:translateY(-8px);
 
     }
 
 }
 
-/* =========================
-      PROGRESS BAR
-========================= */
+/* Finish */
 
-.progress{
+#flag{
 
-    width:100%;
+    position:absolute;
 
-    height:38px;
+    right:18px;
 
-    margin-top:45px;
+    top:14px;
 
-    background:
-
-        rgba(255,255,255,.18);
-
-    border-radius:50px;
-
-    overflow:hidden;
-
-    box-shadow:
-
-        inset 0 0 10px rgba(0,0,0,.35);
+    font-size:48px;
 
 }
 
-#bar{
-
-    width:0;
-
-    height:100%;
-
-    border-radius:50px;
-
-    background:
-
-    linear-gradient(
-
-        90deg,
-
-        #00d26a,
-
-        #32ff8f,
-
-        #9cffc5
-
-    );
-
-    transition:width .8s;
-
-}
-
-/* =========================
-        POPUP
-========================= */
+/*==============================
+POPUP
+==============================*/
 
 #popup{
 
     position:fixed;
 
-    right:30px;
+    top:25px;
 
-    bottom:30px;
+    right:-420px;
 
-    width:330px;
+    width:360px;
 
-    padding:22px;
+    background:#ffffff;
 
-    border-radius:20px;
+    border-radius:18px;
 
-    background:
-
-        rgba(255,255,255,.95);
-
-    color:#222;
+    padding:20px;
 
     box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
 
-        0 20px 40px rgba(0,0,0,.35);
+    transition:right .5s ease;
 
-    opacity:0;
-
-    transform:
-
-        translateY(40px);
-
-    transition:.45s;
+    z-index:999;
 
 }
 
 #popup.show{
 
-    opacity:1;
-
-    transform:
-
-        translateY(0);
+    right:25px;
 
 }
 
 .popup-title{
 
-    color:#ff5722;
-
-    font-size:24px;
+    font-size:22px;
 
     font-weight:bold;
 
-    margin-bottom:15px;
+    color:#4CAF50;
+
+    margin-bottom:12px;
 
 }
 
@@ -448,76 +421,41 @@ header p{
 
     font-size:28px;
 
-    font-weight:700;
+    font-weight:bold;
 
-    margin-bottom:10px;
+    color:#222;
+
+    margin-bottom:8px;
 
 }
 
 #popupMoney{
 
-    font-size:36px;
+    font-size:32px;
 
-    color:#00a84f;
+    color:#e53935;
 
-    font-weight:900;
-
-}
-
-/* =========================
-       FIREWORK
-========================= */
-
-#fireworks{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
+    font-weight:bold;
 
 }
 
-/* =========================
-      MONEY EFFECT
-========================= */
-
-#money{
-
-    color:#7dffb1;
-
-}
-
-#percent{
-
-    color:#ffd54f;
-
-}
-/* =======================================================
-   STYLE.CSS
-   PART 3 (FINAL)
-======================================================= */
-
-/* =========================
-      LEADERBOARD
-========================= */
+/*==============================
+LEADERBOARD
+==============================*/
 
 .leaderboard{
 
-    margin-top:45px;
+    background:
+        rgba(255,255,255,.25);
 
-    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(12px);
 
-    backdrop-filter:blur(14px);
+    border-radius:20px;
 
-    border:1px solid rgba(255,255,255,.18);
-
-    border-radius:22px;
-
-    padding:25px;
+    padding:20px;
 
     box-shadow:
-        0 15px 30px rgba(0,0,0,.25);
+        0 10px 25px rgba(0,0,0,.15);
 
 }
 
@@ -525,254 +463,94 @@ header p{
 
     text-align:center;
 
+    color:white;
+
     margin-bottom:20px;
 
-    font-size:32px;
-
-    color:#ffe082;
+    font-size:34px;
 
 }
 
-.leaderboard table{
+table{
 
     width:100%;
 
     border-collapse:collapse;
 
-}
+    background:white;
 
-.leaderboard th{
+    border-radius:12px;
 
-    padding:16px;
-
-    background:rgba(255,255,255,.15);
-
-    font-size:22px;
+    overflow:hidden;
 
 }
 
-.leaderboard td{
+thead{
+
+    background:#4CAF50;
+
+    color:white;
+
+}
+
+th{
 
     padding:15px;
 
     font-size:20px;
 
-    border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+td{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+    font-size:18px;
 
 }
 
-.leaderboard tbody tr{
+tbody tr:nth-child(even){
 
-    transition:.25s;
-
-}
-
-.leaderboard tbody tr:hover{
-
-    background:rgba(255,255,255,.08);
+    background:#f8f8f8;
 
 }
 
-/* =========================
-      GLASS EFFECT
-========================= */
+tbody tr:hover{
 
-.card,
-.leaderboard,
-#popup{
+    background:#E8F5E9;
 
-    border:1px solid rgba(255,255,255,.18);
+}
+/*=========================================================
+    STYLE.CSS
+    FINAL - PART 3/3
+=========================================================*/
+
+/*==============================
+FIREWORKS
+==============================*/
+
+#fireworks{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:9998;
 
 }
 
-/* =========================
-      FADE IN
-========================= */
-
-header,
-.kpi,
-.race,
-.progress,
-.leaderboard{
-
-    animation:fadeUp .8s ease;
-
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(25px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* =========================
-      TV MODE
-========================= */
-
-@media (min-width:1600px){
-
-    header h1{
-
-        font-size:72px;
-
-    }
-
-    .value{
-
-        font-size:58px;
-
-    }
-
-    .leaderboard td{
-
-        font-size:24px;
-
-    }
-
-    #dino{
-
-        font-size:120px;
-
-    }
-
-    .finish{
-
-        font-size:95px;
-
-    }
-
-}
-
-/* =========================
-      TABLET
-========================= */
-
-@media(max-width:1100px){
-
-    .kpi{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .leaderboard{
-
-        margin-top:35px;
-
-    }
-
-}
-
-/* =========================
-      MOBILE
-========================= */
-
-@media(max-width:768px){
-
-    body{
-
-        overflow:auto;
-
-    }
-
-    header h1{
-
-        font-size:36px;
-
-    }
-
-    header p{
-
-        font-size:18px;
-
-    }
-
-    .value{
-
-        font-size:32px;
-
-    }
-
-    .label{
-
-        font-size:18px;
-
-    }
-
-    .race{
-
-        height:120px;
-
-    }
-
-    #dino{
-
-        font-size:58px;
-
-    }
-
-    .finish{
-
-        font-size:48px;
-
-    }
-
-    .leaderboard h2{
-
-        font-size:24px;
-
-    }
-
-    .leaderboard th,
-    .leaderboard td{
-
-        font-size:16px;
-
-        padding:10px;
-
-    }
-
-    #popup{
-
-        width:260px;
-
-        right:15px;
-
-        bottom:15px;
-
-    }
-
-    #popupStore{
-
-        font-size:22px;
-
-    }
-
-    #popupMoney{
-
-        font-size:28px;
-
-    }
-
-}
-
-/* =========================
-      SCROLLBAR
-========================= */
+/*==============================
+SCROLLBAR
+==============================*/
 
 ::-webkit-scrollbar{
 
@@ -782,12 +560,266 @@ header,
 
 ::-webkit-scrollbar-thumb{
 
-    background:#4fc3f7;
+    background:#4CAF50;
 
     border-radius:20px;
 
 }
 
-/* =========================
-      END
-========================= */
+/*==============================
+LOADING EFFECT
+==============================*/
+
+.loading{
+
+    opacity:.6;
+
+    pointer-events:none;
+
+}
+
+/*==============================
+FADE ANIMATION
+==============================*/
+
+.fade-in{
+
+    animation:fadeIn .5s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==============================
+CARD HOVER
+==============================*/
+
+.card,
+.leaderboard,
+.track{
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.card:hover,
+.leaderboard:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.18);
+
+}
+
+/*==============================
+TV MODE
+==============================*/
+
+@media (min-width:1600px){
+
+    header h1{
+
+        font-size:68px;
+
+    }
+
+    header p{
+
+        font-size:28px;
+
+    }
+
+    .card .title{
+
+        font-size:28px;
+
+    }
+
+    .card .value{
+
+        font-size:54px;
+
+    }
+
+    .leaderboard h2{
+
+        font-size:42px;
+
+    }
+
+    th{
+
+        font-size:24px;
+
+    }
+
+    td{
+
+        font-size:22px;
+
+    }
+
+    #popup{
+
+        width:460px;
+
+        padding:28px;
+
+    }
+
+    #popupStore{
+
+        font-size:34px;
+
+    }
+
+    #popupMoney{
+
+        font-size:42px;
+
+    }
+
+    #dino{
+
+        font-size:72px;
+
+    }
+
+    #flag{
+
+        font-size:68px;
+
+    }
+
+}
+
+/*==============================
+LAPTOP
+==============================*/
+
+@media (max-width:1200px){
+
+    .container{
+
+        width:98%;
+
+    }
+
+}
+
+/*==============================
+TABLET
+==============================*/
+
+@media (max-width:900px){
+
+    html,
+    body{
+
+        overflow:auto;
+
+    }
+
+    .kpi-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .track{
+
+        height:80px;
+
+    }
+
+    #dino{
+
+        font-size:42px;
+
+    }
+
+    #flag{
+
+        font-size:40px;
+
+    }
+
+    .leaderboard{
+
+        margin-bottom:30px;
+
+    }
+
+}
+
+/*==============================
+PHONE
+==============================*/
+
+@media (max-width:600px){
+
+    header h1{
+
+        font-size:36px;
+
+    }
+
+    header p{
+
+        font-size:16px;
+
+    }
+
+    .card .value{
+
+        font-size:28px;
+
+    }
+
+    #popup{
+
+        width:92%;
+
+        right:-100%;
+
+    }
+
+    #popup.show{
+
+        right:4%;
+
+    }
+
+    th,
+    td{
+
+        font-size:14px;
+
+        padding:10px;
+
+    }
+
+}
+
+/*==============================
+END
+==============================*/
