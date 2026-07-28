@@ -1,12 +1,12 @@
 /*=========================================================
-    MISSION 500M - FINAL VERSION
-    SCRIPT.JS
-    PART 1/4
+    MISSION 500M
+    FINAL VERSION
 =========================================================*/
 
 const TARGET = 500000000;
 
-const API_URL = "https://script.google.com/macros/s/AKfycby1Duo1YkcLcoqVSFNIi3PNYCu2R6P4NFUSOgA4CmAQHMM4WTbtK6iZUrJND_XzhSne/exec";
+const API_URL =
+"https://script.google.com/macros/s/AKfycby1Duo1YkcLcoqVSFNIi3PNYCu2R6P4NFUSOgA4CmAQHMM4WTbtK6iZUrJND_XzhSne/exec";
 
 const REFRESH_TIME = 5000;
 
@@ -17,26 +17,31 @@ const REFRESH_TIME = 5000;
 const moneyElement = document.getElementById("money");
 const percentElement = document.getElementById("percent");
 
-const dino = document.getElementById("dino");
 const bar = document.getElementById("bar");
+const dino = document.getElementById("dino");
 
 const popup = document.getElementById("popup");
 const popupStore = document.getElementById("popupStore");
 const popupMoney = document.getElementById("popupMoney");
 
-const leaderboard = document.getElementById("leaderboard");
+const leaderboard =
+document.getElementById("leaderboard");
 
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
+const canvas =
+document.getElementById("fireworks");
+
+const ctx =
+canvas.getContext("2d");
 
 /*=========================================================
     GLOBAL
 =========================================================*/
 
 let totalSale = 0;
+
 let currentMoney = 0;
 
-let lastOrderId = "";
+let lastOrderId = null;
 
 let fired100 = false;
 let fired250 = false;
@@ -47,17 +52,18 @@ let popupTimer = null;
 let particles = [];
 
 /*=========================================================
-    FORMAT MONEY
+    FORMAT
 =========================================================*/
 
 function formatMoney(value){
 
-    return Number(value || 0).toLocaleString("vi-VN") + " ₫";
+    return Number(value || 0)
+    .toLocaleString("vi-VN") + " ₫";
 
 }
 
 /*=========================================================
-    ANIMATE MONEY
+    MONEY ANIMATION
 =========================================================*/
 
 function animateMoney(target){
@@ -71,13 +77,16 @@ function animateMoney(target){
     function frame(now){
 
         const progress =
-            Math.min((now-startTime)/duration,1);
+        Math.min(
+            (now-startTime)/duration,
+            1
+        );
 
         currentMoney =
-            start + (target-start)*progress;
+        start + (target-start)*progress;
 
-        moneyElement.innerHTML =
-            formatMoney(currentMoney);
+        moneyElement.textContent =
+        formatMoney(currentMoney);
 
         if(progress < 1){
 
@@ -97,21 +106,24 @@ function animateMoney(target){
 
 function updateProgress(total){
 
-    totalSale = Number(total)||0;
+    totalSale = Number(total) || 0;
 
     animateMoney(totalSale);
 
     const percent =
-        Math.min(totalSale/TARGET*100,100);
+    Math.min(
+        totalSale/TARGET*100,
+        100
+    );
 
-    percentElement.innerHTML =
-        percent.toFixed(1)+"%";
+    percentElement.textContent =
+    percent.toFixed(1) + "%";
 
     bar.style.width =
-        percent+"%";
+    percent + "%";
 
     dino.style.left =
-        `calc(${percent}% - 45px)`;
+    `calc(${percent}% - 40px)`;
 
 }
 /*=========================================================
@@ -126,13 +138,14 @@ function updateProgress(total){
 function showPopup(store, amount){
 
     popupStore.textContent = store;
+
     popupMoney.textContent = formatMoney(amount);
 
     popup.classList.add("show");
 
     clearTimeout(popupTimer);
 
-    popupTimer = setTimeout(() => {
+    popupTimer = setTimeout(()=>{
 
         popup.classList.remove("show");
 
@@ -150,31 +163,40 @@ function updateLeaderboard(orders){
 
     orders.forEach(item=>{
 
-        const store = item.store || "Không xác định";
+        const name = item.store || "Không xác định";
 
-        if(!dealers[store]){
+        if(!dealers[name]){
 
-            dealers[store]=0;
+            dealers[name]=0;
 
         }
 
-        dealers[store]+=Number(item.amount)||0;
+        dealers[name]+=Number(item.amount)||0;
 
     });
 
     const ranking =
+
         Object.entries(dealers)
+
         .sort((a,b)=>b[1]-a[1])
+
         .slice(0,10);
 
     if(ranking.length===0){
 
         leaderboard.innerHTML=`
-            <tr>
-                <td colspan="3">
-                    Chưa có dữ liệu
-                </td>
-            </tr>
+
+        <tr>
+
+            <td colspan="3">
+
+                Chưa có dữ liệu
+
+            </td>
+
+        </tr>
+
         `;
 
         return;
@@ -186,11 +208,17 @@ function updateLeaderboard(orders){
     ranking.forEach((item,index)=>{
 
         html+=`
+
         <tr>
+
             <td>${index+1}</td>
+
             <td>${item[0]}</td>
+
             <td>${formatMoney(item[1])}</td>
+
         </tr>
+
         `;
 
     });
@@ -200,13 +228,14 @@ function updateLeaderboard(orders){
 }
 
 /*=========================================================
-    CANVAS
+    FIREWORK CANVAS
 =========================================================*/
 
 function resizeCanvas(){
 
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    canvas.height = window.innerHeight;
 
 }
 
@@ -215,12 +244,12 @@ window.addEventListener("resize",resizeCanvas);
 resizeCanvas();
 
 /*=========================================================
-    FIREWORK
+    CREATE PARTICLES
 =========================================================*/
 
 function createFirework(){
 
-    for(let i=0;i<100;i++){
+    for(let i=0;i<120;i++){
 
         particles.push({
 
@@ -242,18 +271,47 @@ function createFirework(){
 
 }
 
+/*=========================================================
+    DRAW FIREWORK
+=========================================================*/
+
 function drawFireworks(){
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(
 
-    particles.forEach((p,index)=>{
+        0,
+
+        0,
+
+        canvas.width,
+
+        canvas.height
+
+    );
+
+    particles = particles.filter(p=>p.life>0);
+
+    particles.forEach(p=>{
 
         ctx.beginPath();
 
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.arc(
+
+            p.x,
+
+            p.y,
+
+            p.size,
+
+            0,
+
+            Math.PI*2
+
+        );
 
         ctx.fillStyle=
-            `hsl(${Math.random()*360},100%,60%)`;
+
+        `hsl(${Math.random()*360},100%,60%)`;
 
         ctx.fill();
 
@@ -265,12 +323,6 @@ function drawFireworks(){
 
         p.life--;
 
-        if(p.life<=0){
-
-            particles.splice(index,1);
-
-        }
-
     });
 
     requestAnimationFrame(drawFireworks);
@@ -278,6 +330,10 @@ function drawFireworks(){
 }
 
 drawFireworks();
+
+/*=========================================================
+    FIREWORK
+=========================================================*/
 
 function firework(){
 
@@ -317,25 +373,28 @@ function checkMilestone(){
 
         firework();
 
-        alert("🎉 MISSION 500 TRIỆU ĐÃ HOÀN THÀNH!");
-
     }
 
 }
 
 /*=========================================================
-    LOAD DATA FROM APPS SCRIPT
+    LOAD DATA
 =========================================================*/
 
-async function loadData(){
+async function loadData(firstLoad=false){
 
     try{
 
         const response = await fetch(
+
             API_URL + "?t=" + Date.now(),
+
             {
+
                 cache:"no-store"
+
             }
+
         );
 
         if(!response.ok){
@@ -346,39 +405,180 @@ async function loadData(){
 
         const data = await response.json();
 
+        const orders = data.orders || [];
+
         updateProgress(Number(data.total)||0);
 
-        updateLeaderboard(data.orders||[]);
+        updateLeaderboard(orders);
 
         checkMilestone();
 
-        if(data.orders && data.orders.length){
+        if(orders.length===0){
 
-            const last =
-                data.orders[data.orders.length-1];
+            return;
 
-            const orderId =
-                `${last.time}_${last.store}_${last.amount}`;
+        }
 
-            if(orderId!==lastOrderId){
+        const last = orders[orders.length-1];
 
-                lastOrderId=orderId;
+        const orderId =
 
-                showPopup(
-                    last.store,
-                    Number(last.amount)
-                );
+            `${last.time}_${last.store}_${last.amount}`;
 
-            }
+        /*==============================
+            LẦN MỞ ĐẦU
+            KHÔNG HIỆN POPUP
+        ==============================*/
+
+        if(firstLoad){
+
+            lastOrderId = orderId;
+
+            return;
+
+        }
+
+        /*==============================
+            CHỈ POPUP KHI CÓ ĐƠN MỚI
+        ==============================*/
+
+        if(lastOrderId===null){
+
+            lastOrderId = orderId;
+
+            return;
+
+        }
+
+        if(orderId!==lastOrderId){
+
+            lastOrderId = orderId;
+
+            showPopup(
+
+                last.store,
+
+                Number(last.amount)
+
+            );
 
         }
 
     }
 
-    catch(err){
+    catch(error){
 
-        console.error(err);
+        console.error(
+
+            "Lỗi kết nối:",
+
+            error
+
+        );
 
     }
 
 }
+/*=========================================================
+    PART 4/4
+    START SYSTEM
+=========================================================*/
+
+/*=========================================================
+    RESET MILESTONE
+=========================================================*/
+
+function resetMilestone(){
+
+    fired100 = totalSale >= 100000000;
+
+    fired250 = totalSale >= 250000000;
+
+    fired500 = totalSale >= 500000000;
+
+}
+
+/*=========================================================
+    AUTO REFRESH
+=========================================================*/
+
+let refreshTimer = null;
+
+function startAutoRefresh(){
+
+    if(refreshTimer){
+
+        clearInterval(refreshTimer);
+
+    }
+
+    refreshTimer = setInterval(async()=>{
+
+        await loadData(false);
+
+    },REFRESH_TIME);
+
+}
+
+/*=========================================================
+    START DASHBOARD
+=========================================================*/
+
+async function startDashboard(){
+
+    try{
+
+        /* Lần đầu chỉ tải dữ liệu,
+           KHÔNG popup */
+
+        await loadData(true);
+
+        resetMilestone();
+
+        startAutoRefresh();
+
+        console.log("MISSION 500M READY");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/*=========================================================
+    ONLINE / OFFLINE
+=========================================================*/
+
+window.addEventListener("online",()=>{
+
+    console.log("Đã kết nối Internet");
+
+    loadData(false);
+
+});
+
+window.addEventListener("offline",()=>{
+
+    console.log("Mất kết nối Internet");
+
+});
+
+/*=========================================================
+    START
+=========================================================*/
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    ()=>{
+
+        startDashboard();
+
+    }
+
+);
